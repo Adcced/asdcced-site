@@ -12,8 +12,42 @@ a{color:inherit;text-decoration:none}.page{width:min(1500px,100%);margin:auto;pa
 @media(max-width:800px){.page{padding:0 18px}.top{height:64px}.top .mono{font-size:9px}.intro{grid-template-columns:1fr;gap:38px;padding:70px 0 62px}.intro h1{font-size:clamp(84px,24vw,150px)}.lead{font-size:18px}.gallery-head{display:block}.gallery-head p{margin-top:18px}.gallery{grid-template-columns:1fr 1fr;gap:24px 10px}.wide,.tall,.half,.portrait,.panorama,.dark,.red{grid-column:span 1}.wide,.panorama{grid-column:1/-1}.tall img,.portrait img{aspect-ratio:3/4}.note{grid-template-columns:1fr;gap:24px;margin-top:52px;padding-bottom:64px}.footer{gap:12px;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+<style id="v13-gallery-polish">
+.intro{padding-bottom:84px}.intro h1{line-height:.82}.lead{padding-top:12px;text-wrap:pretty}.index-line{margin-top:34px;padding:15px 0}
+.gallery-head{padding-top:52px}.gallery-head h2{line-height:.92}.gallery-head p{padding-top:8px;text-wrap:pretty}
+.frame{transition:transform .45s cubic-bezier(.2,.7,.2,1),filter .4s ease}.frame:hover{transform:translateY(-5px);filter:drop-shadow(0 14px 22px rgba(37,75,176,.12))}.frame:before{content:"";position:absolute;z-index:2;left:10px;top:10px;width:18px;height:18px;border-top:1px solid var(--yellow);border-left:1px solid var(--yellow);opacity:0;transform:translate(-5px,-5px);transition:opacity .3s,transform .3s}.frame:hover:before{opacity:1;transform:none}
+.frame figcaption{padding:12px 4px 0;line-height:1.5}.note{padding-top:34px}.note p{text-wrap:pretty}
+@media(max-width:800px){.intro{padding-bottom:68px}.gallery-head{padding-top:42px}.frame:hover{transform:none;filter:none}}
+@media(prefers-reduced-motion:reduce){.frame,.frame:before{transition:none}.frame:hover{transform:none;filter:none}}
+</style>
+<style id="v13-photography-theme">
+.photography-page{--mx:50vw;--my:30vh;--kicker-x:0px;--kicker-y:0px}
+.photography-page:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(340px 240px at var(--mx) var(--my),rgba(255,255,255,.4),transparent 70%);mix-blend-mode:screen;opacity:.85;transition:opacity .45s ease}
+.photography-page .kicker{position:relative;display:inline-flex;align-items:center;font-size:13px;letter-spacing:.14em;transform:translate3d(var(--kicker-x),var(--kicker-y),0);transition:transform .5s ease,text-shadow .5s ease;color:var(--blue);text-shadow:0 0 18px rgba(37,75,176,.18)}
+.photography-page .kicker:after{content:"";height:1px;width:46px;margin-left:12px;background:linear-gradient(90deg,var(--blue),transparent);transform-origin:left;animation:lightSweep 5.5s ease-in-out infinite}
+@keyframes lightSweep{0%,20%{opacity:.25;transform:scaleX(.25)}55%{opacity:1;transform:scaleX(1)}80%,100%{opacity:.35;transform:scaleX(.35)}}
+.photography-page .frame{--frame-x:0px;--frame-y:0px;transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .4s ease}
+.photography-page .frame img{transform:translate3d(var(--frame-x),var(--frame-y),0) scale(var(--frame-scale,1));transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+.photography-page .frame:hover img{--frame-scale:1.045;filter:saturate(1.08) contrast(1.06)}
+.photography-page .frame:after{background:radial-gradient(180px 120px at var(--spot-x,50%) var(--spot-y,50%),rgba(255,255,255,.28),transparent 72%);transition:background-position .25s ease,border-color .35s ease;mix-blend-mode:screen}
+.photography-page .frame:hover:after{border-color:rgba(37,75,176,.58)}
+@media(prefers-reduced-motion:reduce){.photography-page .kicker:after{animation:none}.photography-page .frame img{transform:none}.photography-page .frame{transition:none}.photography-page .frame:hover{transform:none;filter:none}}
+</style>
+<style id="v14-photography-interaction">
+.photography-page .theme-trail,.photography-page .theme-click{position:fixed;left:0;top:0;z-index:8;pointer-events:none}
+.photography-page .theme-trail{width:18px;height:18px;border:1px solid rgba(255,255,255,.66);border-radius:50%;opacity:.44;transform:translate(-50%,-50%);filter:blur(.2px);animation:photoTrailFade .95s ease-out forwards}
+@keyframes photoTrailFade{to{opacity:0;transform:translate(-50%,-50%) scale(2.6);filter:blur(2px)}}
+.photography-page .theme-click{width:48px;height:48px;border:1px solid rgba(37,75,176,.62);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 8px rgba(255,255,255,.16),inset 0 0 20px rgba(255,255,255,.18);animation:photoClick .95s cubic-bezier(.2,.7,.2,1) forwards}
+.photography-page .theme-click:before,.photography-page .theme-click:after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.58);border-radius:50%}.photography-page .theme-click:after{inset:-14px;border-color:rgba(37,75,176,.22)}
+@keyframes photoClick{0%{opacity:.7;scale:.55}55%{opacity:.5}100%{opacity:0;scale:1.45}}
+</style>
+<style id="v15-particle-field">
+.photography-page .theme-trail,.photography-page .theme-click{display:none!important}
+.theme-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:6;pointer-events:none;opacity:.72;mix-blend-mode:screen}
+@media(prefers-reduced-motion:reduce){.theme-canvas{display:none}}
+</style>
 </head>
-<body>
+<body class="photography-page">
 <div class="page">
 <header class="top"><a class="top-left" href="index.html"><span class="brand-mark"></span><span class="mono">ASDCCED / PHOTO FILE 02</span></a><a class="back mono" href="index.html">← 返回首页</a></header>
 <main>
@@ -35,5 +69,47 @@ a{color:inherit;text-decoration:none}.page{width:min(1500px,100%);margin:auto;pa
 <section class="note"><strong>光线先于<br>解释抵达。</strong><p>这组照片暂以“现场笔记”的方式呈现。后续可以继续补充拍摄日期、地点地图、相机与镜头信息，以及按系列筛选、单张放大和下载授权等功能。</p></section>
 </main><footer class="footer mono"><span>© ASDCCED / 2026</span><span>VISUAL PAPER / PHOTO FILE 02</span></footer>
 </div>
+<script>
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible')}),{threshold:.1});
+ document.querySelectorAll('.frame,.note').forEach((el,i)=>{el.style.setProperty('--delay',`${(i%5)*70}ms`);io.observe(el)});
+ const s=document.createElement('style');s.textContent='.frame,.note{opacity:0;transform:translateY(18px);transition:opacity .7s ease var(--delay,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--delay,0ms)}.frame.is-visible,.note.is-visible{opacity:1;transform:none}';document.head.appendChild(s);
+}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const kicker=document.querySelector('.kicker');
+  document.addEventListener('pointermove',e=>{
+    document.body.style.setProperty('--mx',`${e.clientX}px`);
+    document.body.style.setProperty('--my',`${e.clientY}px`);
+    if(kicker){kicker.style.setProperty('--kicker-x',`${((e.clientX/innerWidth-.5)*8).toFixed(2)}px`);kicker.style.setProperty('--kicker-y',`${((e.clientY/innerHeight-.5)*5).toFixed(2)}px`)}
+  },{passive:true});
+  document.querySelectorAll('.frame').forEach(frame=>{
+    frame.addEventListener('pointermove',e=>{const r=frame.getBoundingClientRect();const x=(e.clientX-r.left)/r.width;const y=(e.clientY-r.top)/r.height;frame.style.setProperty('--frame-x',`${((x-.5)*8).toFixed(2)}px`);frame.style.setProperty('--frame-y',`${((y-.5)*8).toFixed(2)}px`);frame.style.setProperty('--frame-scale','1.045');frame.style.setProperty('--spot-x',`${(x*100).toFixed(1)}%`);frame.style.setProperty('--spot-y',`${(y*100).toFixed(1)}%`)},{passive:true});
+    frame.addEventListener('pointerleave',()=>{frame.style.setProperty('--frame-x','0px');frame.style.setProperty('--frame-y','0px');frame.style.setProperty('--frame-scale','1');frame.style.setProperty('--spot-x','50%');frame.style.setProperty('--spot-y','50%')});
+  });
+}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const page=document.body;
+  const blocked='img,figure,a,button,h1,h2,h3,p,span,b,strong,em,figcaption,header,footer,nav';
+  const backgroundOnly=target=>target===page||target===document.documentElement||(!target.closest(blocked)&&!!target.closest('.page'));
+  let lastTrail=0;
+  document.addEventListener('pointermove',e=>{if(!backgroundOnly(e.target))return;const now=performance.now();if(now-lastTrail<46)return;lastTrail=now;const node=document.createElement('i');node.className='theme-trail';node.style.left=`${e.clientX}px`;node.style.top=`${e.clientY}px`;page.appendChild(node);setTimeout(()=>node.remove(),1000)},{passive:true});
+  document.addEventListener('pointerdown',e=>{if(!backgroundOnly(e.target))return;const node=document.createElement('i');node.className='theme-click';node.style.left=`${e.clientX}px`;node.style.top=`${e.clientY}px`;node.style.scale=(.9+Math.random()*.25).toFixed(2);page.appendChild(node);setTimeout(()=>node.remove(),1000)});
+}
+</script>
+<canvas class="theme-canvas" aria-hidden="true"></canvas>
+<script>
+(()=>{
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,canvas=document.querySelector('.theme-canvas');if(reduce||!canvas)return;
+  const ctx=canvas.getContext('2d'),page=document.body,blocked='img,figure,a,button,h1,h2,h3,p,span,b,strong,em,figcaption,header,footer,nav';let dpr=1,w=0,h=0,last=0,px=innerWidth/2,py=innerHeight/2,particles=[],bursts=[];
+  const resize=()=>{dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)};resize();addEventListener('resize',resize);
+  const bg=e=>e.target===page||e.target===document.documentElement||(!e.target.closest(blocked)&&!!e.target.closest('.page'));
+  const palette=['#ffffff','#8db8ee','#f0c63d','#d7e6ff'];
+  const add=(x,y,vx,vy,life=1000,size=2,color=palette[(Math.random()*palette.length)|0])=>particles.push({x,y,vx,vy,life,max:life,size,color,oldX:x,oldY:y});
+  addEventListener('pointermove',e=>{if(!bg(e))return;const now=performance.now(),dx=e.clientX-px,dy=e.clientY-py;if(now-last>26){add(e.clientX,e.clientY,dx*.012,dy*.012,900+Math.random()*900,1.8+Math.random()*3);if(Math.random()>.25)add(e.clientX+Math.random()*16-8,e.clientY+Math.random()*16-8,dx*.006,dy*.006,620,1);last=now}px=e.clientX;py=e.clientY},{passive:true});
+  addEventListener('pointerdown',e=>{if(!bg(e))return;for(let i=0;i<34;i++){const a=Math.random()*Math.PI*2,s=.8+Math.random()*3.2;add(e.clientX,e.clientY,Math.cos(a)*s,Math.sin(a)*s,1000+Math.random()*900,2+Math.random()*4)}bursts.push({x:e.clientX,y:e.clientY,t:0,life:1200})});
+  function frame(now){ctx.clearRect(0,0,w,h);ctx.globalCompositeOperation='screen';for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.oldX=p.x;p.oldY=p.y;p.x+=p.vx;p.y+=p.vy;p.vx*=.994;p.vy*=.994;p.life-=16;if(p.life<=0){particles.splice(i,1);continue}const a=Math.max(0,p.life/p.max);ctx.globalAlpha=a*.55;ctx.strokeStyle=p.color;ctx.lineWidth=p.size*.55;ctx.beginPath();ctx.moveTo(p.oldX,p.oldY);ctx.lineTo(p.x-p.vx*7,p.y-p.vy*7);ctx.stroke();ctx.globalAlpha=a*.65;ctx.shadowBlur=10+p.size*2;ctx.shadowColor=p.color;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.size*(.5+a),0,Math.PI*2);ctx.fill();ctx.shadowBlur=0}
+    bursts.forEach((b,i)=>{b.t+=16;const q=b.t/b.life;if(q>=1){bursts.splice(i,1);return}ctx.globalAlpha=(1-q)*.32;ctx.strokeStyle='#ffffff';ctx.lineWidth=1;ctx.beginPath();ctx.arc(b.x,b.y,22+q*68,0,Math.PI*2);ctx.stroke();for(let r=0;r<8;r++){const a=r*Math.PI/4;ctx.globalAlpha=(1-q)*.16;ctx.beginPath();ctx.moveTo(b.x+Math.cos(a)*12,b.y+Math.sin(a)*12);ctx.lineTo(b.x+Math.cos(a)*(42+q*56),b.y+Math.sin(a)*(42+q*56));ctx.stroke()}});ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;requestAnimationFrame(frame)}requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>

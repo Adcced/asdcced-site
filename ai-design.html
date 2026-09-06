@@ -12,8 +12,43 @@ a{color:inherit;text-decoration:none}.page{width:min(1500px,100%);margin:auto;pa
 @media(max-width:800px){.page{padding:0 18px}.top{height:64px}.top .mono{font-size:9px}.intro{grid-template-columns:1fr;gap:38px;padding:70px 0 60px}.intro h1{font-size:clamp(84px,24vw,150px)}.lead{font-size:18px}.manifesto{grid-template-columns:1fr;gap:22px;padding-bottom:54px}.manifesto div{min-height:0}.gallery-head{display:block}.gallery-head p{margin-top:18px}.gallery{grid-template-columns:1fr 1fr;gap:24px 10px}.large,.side,.wide,.narrow,.half{grid-column:span 1}.large,.wide{grid-column:1/-1}.closing{grid-template-columns:1fr;gap:24px;margin-top:54px;padding-bottom:64px}.footer{gap:12px;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+<style id="v13-ai-polish">
+.intro{padding-bottom:84px}.intro h1{line-height:.82}.lead{padding-top:12px;text-wrap:pretty}.index-line{margin-top:34px;padding:15px 0}
+.manifesto{padding-top:28px}.manifesto div{transition:transform .35s ease,background .35s ease;padding-top:2px;padding-bottom:10px}.manifesto div:hover{transform:translateY(-4px);background:rgba(37,75,176,.05)}
+.gallery-head{padding-top:52px}.gallery-head h2{line-height:.92}.gallery-head p{padding-top:8px;text-wrap:pretty}.frame{transition:transform .45s cubic-bezier(.2,.7,.2,1),filter .4s ease}.frame:hover{transform:translateY(-5px);filter:drop-shadow(0 14px 22px rgba(37,75,176,.12))}.frame:before{content:"";position:absolute;z-index:2;right:10px;top:10px;width:18px;height:18px;border-top:1px solid var(--yellow);border-right:1px solid var(--yellow);opacity:0;transform:translate(5px,-5px);transition:opacity .3s,transform .3s}.frame:hover:before{opacity:1;transform:none}.frame figcaption{padding:12px 4px 0;line-height:1.5}.closing{padding-top:34px}.closing p{text-wrap:pretty}
+@media(max-width:800px){.intro{padding-bottom:68px}.gallery-head{padding-top:42px}.frame:hover{transform:none;filter:none}}
+@media(prefers-reduced-motion:reduce){.manifesto div,.frame,.frame:before{transition:none}.frame:hover{transform:none;filter:none}}
+</style>
+<style id="v13-ai-theme">
+.ai-page{--mx:50vw;--my:28vh;--grid-x:0px;--grid-y:0px;--kicker-x:0px;--kicker-y:0px;background-position:var(--grid-x) var(--grid-y),calc(var(--grid-x) * -1) calc(var(--grid-y) * -1)}
+.ai-page:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(280px 220px at var(--mx) var(--my),rgba(239,93,79,.16),transparent 72%),radial-gradient(240px 180px at calc(var(--mx) + 12vw) calc(var(--my) - 10vh),rgba(37,75,176,.12),transparent 70%);mix-blend-mode:multiply;transition:background-position .25s ease}
+.ai-page .kicker{position:relative;display:inline-flex;align-items:center;font-size:13px;letter-spacing:.14em;transform:translate3d(var(--kicker-x),var(--kicker-y),0);transition:transform .35s ease,text-shadow .35s ease}
+.ai-page .kicker:before{content:"";width:24px;height:1px;margin-right:12px;background:var(--red);transform-origin:right;transition:width .35s ease;animation:constructLine 3.8s ease-in-out infinite}
+.ai-page .kicker:after{content:"";position:absolute;left:36px;right:-8px;bottom:-8px;height:1px;background:var(--blue);transform:scaleX(.2);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.ai-page .kicker:hover:before{width:46px}.ai-page .kicker:hover:after{transform:scaleX(1)}
+@keyframes constructLine{0%,55%{opacity:.25;transform:scaleX(.35)}75%,100%{opacity:1;transform:scaleX(1)}}
+.ai-page .frame{--frame-x:0px;--frame-y:0px;--frame-r:0deg;transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .4s ease}
+.ai-page .frame img{transform:translate3d(var(--frame-x),var(--frame-y),0) rotate(var(--frame-r)) scale(var(--frame-scale,1));transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .45s ease}
+.ai-page .frame:hover img{--frame-scale:1.045;filter:saturate(1.16) contrast(1.06)}
+.ai-page .frame:after{transition:border-color .3s ease,box-shadow .3s ease}.ai-page .frame:hover:after{border-color:rgba(239,93,79,.75);box-shadow:inset 0 0 30px rgba(37,75,176,.08)}
+@media(prefers-reduced-motion:reduce){.ai-page .kicker:before{animation:none}.ai-page .frame img{transform:none}.ai-page .frame{transition:none}.ai-page .frame:hover{transform:none;filter:none}}
+</style>
+<style id="v14-ai-interaction">
+.ai-page .theme-trail,.ai-page .theme-click{position:fixed;left:0;top:0;z-index:8;pointer-events:none}
+.ai-page .theme-trail{width:8px;height:8px;border:1px solid rgba(239,93,79,.78);transform:translate(-50%,-50%) rotate(45deg);opacity:.5;animation:aiTrailFade .72s ease-out forwards}
+.ai-page .theme-trail:after{content:"";position:absolute;inset:-3px;border:1px solid rgba(37,75,176,.35)}
+@keyframes aiTrailFade{to{opacity:0;transform:translate(-50%,-50%) rotate(135deg) scale(.12)}}
+.ai-page .theme-click{width:44px;height:44px;border:1px solid rgba(239,93,79,.78);transform:translate(-50%,-50%) rotate(45deg);animation:aiClick .8s cubic-bezier(.2,.7,.2,1) forwards}
+.ai-page .theme-click:before,.ai-page .theme-click:after{content:"";position:absolute;inset:9px;border:1px solid rgba(37,75,176,.66)}.ai-page .theme-click:after{inset:-11px;border-color:rgba(239,93,79,.2)}
+@keyframes aiClick{0%{opacity:.8;scale:.48}52%{opacity:.62}100%{opacity:0;scale:1.35;rotate:90deg}}
+</style>
+<style id="v15-particle-field">
+.ai-page .theme-trail,.ai-page .theme-click{display:none!important}
+.theme-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:6;pointer-events:none;opacity:.78;mix-blend-mode:multiply}
+@media(prefers-reduced-motion:reduce){.theme-canvas{display:none}}
+</style>
 </head>
-<body>
+<body class="ai-page">
 <div class="page">
 <header class="top"><a class="top-left" href="index.html"><span class="brand-mark"></span><span class="mono">ASDCCED / AI DESIGN FILE 03</span></a><a class="back mono" href="index.html">← 返回首页</a></header>
 <main>
@@ -37,5 +72,50 @@ a{color:inherit;text-decoration:none}.page{width:min(1500px,100%);margin:auto;pa
 <section class="closing"><strong>不是生成更多，<br>而是选择更准。</strong><p>这页暂时作为个人创作档案的第一版。后续可以为每件作品补充提示词、模型、迭代截图、人工修改记录和发布尺寸，让“幻象之构”从作品墙继续长成一份可阅读的过程档案。</p></section>
 </main><footer class="footer mono"><span>© ASDCCED / 2026</span><span>VISUAL PAPER / AI DESIGN FILE 03</span></footer>
 </div>
+<script>
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible')}),{threshold:.1});
+ document.querySelectorAll('.manifesto div,.frame,.closing').forEach((el,i)=>{el.style.setProperty('--delay',`${(i%5)*70}ms`);io.observe(el)});
+ const s=document.createElement('style');s.textContent='.manifesto div,.frame,.closing{opacity:0;transform:translateY(18px);transition:opacity .7s ease var(--delay,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--delay,0ms)}.manifesto div.is-visible,.frame.is-visible,.closing.is-visible{opacity:1;transform:none}';document.head.appendChild(s);
+}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const kicker=document.querySelector('.kicker');
+  document.addEventListener('pointermove',e=>{
+    document.body.style.setProperty('--mx',`${e.clientX}px`);
+    document.body.style.setProperty('--my',`${e.clientY}px`);
+    document.body.style.setProperty('--grid-x',`${((e.clientX/innerWidth-.5)*10).toFixed(2)}px`);
+    document.body.style.setProperty('--grid-y',`${((e.clientY/innerHeight-.5)*10).toFixed(2)}px`);
+    if(kicker){kicker.style.setProperty('--kicker-x',`${((e.clientX/innerWidth-.5)*9).toFixed(2)}px`);kicker.style.setProperty('--kicker-y',`${((e.clientY/innerHeight-.5)*6).toFixed(2)}px`)}
+  },{passive:true});
+  document.querySelectorAll('.frame').forEach(frame=>{
+    frame.addEventListener('pointermove',e=>{const r=frame.getBoundingClientRect();const x=(e.clientX-(r.left+r.width/2))/r.width;const y=(e.clientY-(r.top+r.height/2))/r.height;frame.style.setProperty('--frame-x',`${(x*7).toFixed(2)}px`);frame.style.setProperty('--frame-y',`${(y*7).toFixed(2)}px`);frame.style.setProperty('--frame-r',`${(x*1.4).toFixed(2)}deg`);frame.style.setProperty('--frame-scale','1.045')},{passive:true});
+    frame.addEventListener('pointerleave',()=>{frame.style.setProperty('--frame-x','0px');frame.style.setProperty('--frame-y','0px');frame.style.setProperty('--frame-r','0deg');frame.style.setProperty('--frame-scale','1')});
+  });
+}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const page=document.body;
+  const blocked='img,figure,a,button,h1,h2,h3,p,span,b,strong,em,figcaption,header,footer,nav';
+  const backgroundOnly=target=>target===page||target===document.documentElement||(!target.closest(blocked)&&!!target.closest('.page'));
+  let lastTrail=0;
+  document.addEventListener('pointermove',e=>{if(!backgroundOnly(e.target))return;const now=performance.now();if(now-lastTrail<40)return;lastTrail=now;const node=document.createElement('i');node.className='theme-trail';node.style.left=`${e.clientX}px`;node.style.top=`${e.clientY}px`;page.appendChild(node);setTimeout(()=>node.remove(),780)},{passive:true});
+  document.addEventListener('pointerdown',e=>{if(!backgroundOnly(e.target))return;const node=document.createElement('i');node.className='theme-click';node.style.left=`${e.clientX}px`;node.style.top=`${e.clientY}px`;node.style.scale=(.9+Math.random()*.3).toFixed(2);page.appendChild(node);setTimeout(()=>node.remove(),900)});
+}
+</script>
+<canvas class="theme-canvas" aria-hidden="true"></canvas>
+<script>
+(()=>{
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,canvas=document.querySelector('.theme-canvas');if(reduce||!canvas)return;
+  const ctx=canvas.getContext('2d'),page=document.body,blocked='img,figure,a,button,h1,h2,h3,p,span,b,strong,em,figcaption,header,footer,nav';let dpr=1,w=0,h=0,last=0,px=innerWidth/2,py=innerHeight/2,particles=[],bursts=[];
+  const resize=()=>{dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)};resize();addEventListener('resize',resize);
+  const bg=e=>e.target===page||e.target===document.documentElement||(!e.target.closest(blocked)&&!!e.target.closest('.page'));
+  const palette=['#254bb0','#ef5d4f','#f0c63d','#5b89d9','#78a66a'];
+  const add=(x,y,vx,vy,life=820,size=2,color=palette[(Math.random()*palette.length)|0])=>particles.push({x,y,vx,vy,life,max:life,size,color,oldX:x,oldY:y});
+  addEventListener('pointermove',e=>{if(!bg(e))return;const now=performance.now(),dx=e.clientX-px,dy=e.clientY-py;if(now-last>20){add(e.clientX,e.clientY,dx*.022,dy*.022,650+Math.random()*700,1.3+Math.random()*3);if(Math.random()>.35)add(e.clientX+Math.random()*22-11,e.clientY+Math.random()*22-11,-dy*.008,dx*.008,520,1.2);last=now}px=e.clientX;py=e.clientY},{passive:true});
+  addEventListener('pointerdown',e=>{if(!bg(e))return;for(let i=0;i<42;i++){const a=Math.random()*Math.PI*2,s=1+Math.random()*4.2;add(e.clientX,e.clientY,Math.cos(a)*s,Math.sin(a)*s,760+Math.random()*900,1.5+Math.random()*3.6)}bursts.push({x:e.clientX,y:e.clientY,t:0,life:1000})});
+  function frame(now){ctx.clearRect(0,0,w,h);for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.oldX=p.x;p.oldY=p.y;p.x+=p.vx;p.y+=p.vy;p.vx*=.982;p.vy*=.982;p.life-=16;if(p.life<=0){particles.splice(i,1);continue}const a=Math.max(0,p.life/p.max);ctx.globalAlpha=a*.72;ctx.strokeStyle=p.color;ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(p.oldX,p.oldY);ctx.lineTo(p.x-p.vx*10,p.y-p.vy*10);ctx.stroke();ctx.globalAlpha=a*.8;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.size*(.55+a),0,Math.PI*2);ctx.fill()}
+    for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const a=particles[i],b=particles[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<118){ctx.globalAlpha=(1-dist/118)*.16;ctx.strokeStyle=a.color;ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.quadraticCurveTo((a.x+b.x)/2+dy*.16,(a.y+b.y)/2-dx*.16,b.x,b.y);ctx.stroke()}}
+    bursts.forEach((b,i)=>{b.t+=16;const q=b.t/b.life;if(q>=1){bursts.splice(i,1);return}ctx.globalAlpha=(1-q)*.5;ctx.strokeStyle='#ef5d4f';ctx.lineWidth=1.2;ctx.beginPath();for(let r=0;r<3;r++){const rad=12+r*15+q*40;ctx.moveTo(b.x+Math.cos(q*5+r*2)*rad,b.y+Math.sin(q*5+r*2)*rad);ctx.arc(b.x,b.y,rad,q*5+r*2,q*5+r*2+Math.PI*1.35)}ctx.stroke()});ctx.globalAlpha=1;requestAnimationFrame(frame)}requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
